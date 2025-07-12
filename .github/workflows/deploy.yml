@@ -1,11 +1,14 @@
 name: Deploy to AWS S3
 
 on:
-  push:
-    branches: [main] # Deploy only on pushes to main
+  workflow_run:
+    workflows: ["Node.js CI"]  # Name must match ci.yml workflow
+    types:
+      - completed
 
 jobs:
   deploy:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     name: S3 Upload Job
     runs-on: ubuntu-latest
 
@@ -14,20 +17,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Verify AWS CLI is available
-        run: aws --version # Ensures CLI is installed
-
-      - name: Debug script and public folder
-        run: |
-          echo "Listing deploy script:"
-          ls -la ./deploy-aws.sh
-          echo "Listing public folder:"
-          ls -la ./public
-        env:
-          AWS_REGION: ${{ secrets.AWS_REGION }}
-          AWS_DEPLOY_BUCKET: ${{ secrets.AWS_DEPLOY_BUCKET }}
-
-      - name: Make deploy script executable
-        run: chmod +x deploy-aws.sh
+        run: aws --version
 
       - name: Deploy to AWS S3
         env:
