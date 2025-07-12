@@ -1,0 +1,35 @@
+name: Node.js CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build-and-test:
+    name: Run tests and lint
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16, 18, 20] # Test on multiple Node.js versions
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test # Executes Jest tests
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: test/

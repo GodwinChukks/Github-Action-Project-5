@@ -1,0 +1,28 @@
+{
+  "name": "github-action-project-5",
+  "version": "1.0.0",
+  "description": "## Importance of Advance Concept in CICD",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GodwinChukks/Github-Action-Project-5.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GodwinChukks/Github-Action-Project-5/issues"
+  },
+  "homepage": "https://github.com/GodwinChukks/Github-Action-Project-5#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "jest": "^30.0.4",
+    "supertest": "^7.1.3"
+  }
+}
