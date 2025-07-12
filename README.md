@@ -203,7 +203,17 @@ This installs our project’s dependencies listed in package.json
 
 ### Secret created for deployment to aws s3 bucket
 
-7
+[images](screenshot/7.PNG)
+
+### Successful build and deployment to aws s3
+
+[images](screenshot/8.PNG)
+
+[images](screenshot/9.PNG)
+
+[images](screenshot/10.PNG)
+
+
 
 
 
